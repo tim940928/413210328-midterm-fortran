@@ -65,7 +65,7 @@
             padding: 16px;
             border-radius: 6px;
             overflow-x: auto;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             line-height: 1.5;
             margin: 10px 0;
         }
@@ -254,7 +254,99 @@ git push -u origin main</pre>
             <div class="card">
                 <h3>評分系統說明</h3>
                 <p>使用 Python 實作互動式評分系統，可輸入前四題完成情況，自動計算分數。</p>
-                <pre>python3 scoring_system.py</pre>
+                <p>執行方式：<code>python3 scoring_system.py</code></p>
+
+                <h3>完整程式碼（scoring_system.py）</h3>
+                <pre>#!/usr/bin/env python3
+# 任務達成評分系統
+# 作者：許耕綸 413210328
+
+print("=" * 50)
+print("   期中考 目標達成評分系統")
+print("=" * 50)
+print()
+
+scores = {}
+max_score = 20
+
+# 第1題
+print("【第1題】Fortran 程式能計算 1 到 N 的總和，並成功編譯執行")
+print("是否完成？ (y/n 或 輸入 0~20 的分數)")
+ans1 = input("> ").strip().lower()
+if ans1 in ['y', 'yes', '是']:
+    scores[1] = max_score
+elif ans1 in ['n', 'no', '否']:
+    scores[1] = 0
+else:
+    try:
+        scores[1] = max(0, min(max_score, int(ans1)))
+    except:
+        scores[1] = 0
+print(f"第1題得分：{scores[1]}/20\n")
+
+# 第2題
+print("【第2題】執行三次隨機測試並確認正確性")
+print("是否完成？ (y/n 或 輸入 0~20 的分數)")
+ans2 = input("> ").strip().lower()
+if ans2 in ['y', 'yes', '是']:
+    scores[2] = max_score
+elif ans2 in ['n', 'no', '否']:
+    scores[2] = 0
+else:
+    try:
+        scores[2] = max(0, min(max_score, int(ans2)))
+    except:
+        scores[2] = 0
+print(f"第2題得分：{scores[2]}/20\n")
+
+# 第3題
+print("【第3題】Git 版本控制：原始 commit + 註解版 commit")
+print("是否完成？ (y/n 或 輸入 0~20 的分數)")
+ans3 = input("> ").strip().lower()
+if ans3 in ['y', 'yes', '是']:
+    scores[3] = max_score
+elif ans3 in ['n', 'no', '否']:
+    scores[3] = 0
+else:
+    try:
+        scores[3] = max(0, min(max_score, int(ans3)))
+    except:
+        scores[3] = 0
+print(f"第3題得分：{scores[3]}/20\n")
+
+# 第4題
+print("【第4題】推送到 GitHub 雲端儲存")
+print("是否完成？ (y/n 或 輸入 0~20 的分數)")
+ans4 = input("> ").strip().lower()
+if ans4 in ['y', 'yes', '是']:
+    scores[4] = max_score
+elif ans4 in ['n', 'no', '否']:
+    scores[4] = 0
+else:
+    try:
+        scores[4] = max(0, min(max_score, int(ans4)))
+    except:
+        scores[4] = 0
+print(f"第4題得分：{scores[4]}/20\n")
+
+# 計算總分
+total = sum(scores.values())
+print("=" * 50)
+print(f"評分結果：")
+print(f"  第1題：{scores[1]:2d} / 20")
+print(f"  第2題：{scores[2]:2d} / 20")
+print(f"  第3題：{scores[3]:2d} / 20")
+print(f"  第4題：{scores[4]:2d} / 20")
+print(f"  -------------------")
+print(f"  總分 ：{total:2d} / 80")
+print("=" * 50)
+
+if total == 80:
+    print("恭喜！全部完成，滿分！")
+elif total >= 60:
+    print("表現良好，繼續加油！")
+else:
+    print("請檢查未完成的項目。")</pre>
 
                 <h3>評分結果（本專案）</h3>
                 <div class="score-box">
